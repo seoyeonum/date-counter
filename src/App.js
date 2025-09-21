@@ -15,41 +15,41 @@ function Counter() {
 
   // step handler: minus
   function handleMinusStep() {
-    // alert('minusStep');
     if (step > 1) setStep((step) => step - 1);
   }
 
   // step handler: plus
   function handlePlusStep() {
-    // alert('plusStep');
     setStep((step) => step + 1);
   }
 
   // count handler: minus
   function handleMinusCount() {
-    // alert('minusCount');
     setCount((count) => count - step);
   }
 
   // count handler: plus
-  function handlerPlusCounter() {
-    // alert('plusCounter');
+  function handlePlusCount() {
     setCount((count) => count + step);
   }
 
   return (
-    <div>
+    <>
       <div>
-        <button onClick={handleMinusStep}>&#45;</button>
+        <Button btnName="-" functionName={handleMinusStep} />
         Step: {step}
-        <button onClick={handlePlusStep}>&#43;</button>
+        <Button btnName="+" functionName={handlePlusStep} />
       </div>
       <div>
-        <button onClick={handleMinusCount}>&#45;</button>
+        <Button btnName="-" functionName={handleMinusCount} />
         Count: {count}
-        <button onClick={handlerPlusCounter}>&#43;</button>
+        <Button btnName="+" functionName={handlePlusCount} />
       </div>
       <p>{count} days from today is Sat Sep 20 2025</p>
-    </div>
+    </>
   );
+}
+
+function Button({ btnName, functionName }) {
+  return <button onClick={functionName}>{btnName}</button>;
 }
