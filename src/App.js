@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './style.css';
 
 export default function App() {
@@ -9,15 +10,26 @@ export default function App() {
 }
 
 function Counter() {
-  const step = 1;
+  const [step, setStep] = useState(1);
   const count = 0;
+
+  // step Handler
+  function handleMinusStep() {
+    // alert('minusStep');
+    if (step > 1) setStep((step) => step - 1);
+  }
+
+  function handlePlusStep() {
+    // alert('plusStep');
+    setStep((step) => step + 1);
+  }
 
   return (
     <div>
       <div>
-        <button>&#45;</button>
+        <button onClick={handleMinusStep}>&#45;</button>
         Step: {step}
-        <button>&#43;</button>
+        <button onClick={handlePlusStep}>&#43;</button>
       </div>
       <div>
         <button>&#45;</button>
