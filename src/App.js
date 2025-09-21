@@ -11,17 +11,30 @@ export default function App() {
 
 function Counter() {
   const [step, setStep] = useState(1);
-  const count = 0;
+  const [count, setCount] = useState(0);
 
-  // step Handler
+  // step handler: minus
   function handleMinusStep() {
     // alert('minusStep');
     if (step > 1) setStep((step) => step - 1);
   }
 
+  // step handler: plus
   function handlePlusStep() {
     // alert('plusStep');
     setStep((step) => step + 1);
+  }
+
+  // count handler: minus
+  function handleMinusCount() {
+    // alert('minusCount');
+    setCount((count) => count - step);
+  }
+
+  // count handler: plus
+  function handlerPlusCounter() {
+    // alert('plusCounter');
+    setCount((count) => count + step);
   }
 
   return (
@@ -32,9 +45,9 @@ function Counter() {
         <button onClick={handlePlusStep}>&#43;</button>
       </div>
       <div>
-        <button>&#45;</button>
+        <button onClick={handleMinusCount}>&#45;</button>
         Count: {count}
-        <button>&#43;</button>
+        <button onClick={handlerPlusCounter}>&#43;</button>
       </div>
       <p>{count} days from today is Sat Sep 20 2025</p>
     </div>
