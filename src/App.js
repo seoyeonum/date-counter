@@ -9,6 +9,22 @@ export default function App() {
   );
 }
 
+const nameOfDay = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const nameOfMonth = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
 function Counter() {
   const [step, setStep] = useState(1);
   const [count, setCount] = useState(0);
@@ -45,10 +61,8 @@ function Counter() {
 
   const day = today.getDay(); // .getDay() 는 0(일) ~ 6(토)로 출력된다.
   const date = today.getDate();
-  const month = today.getMonth() + 1; // .getMonth() 는 0 ~ 11 로 출력된다.
+  const month = today.getMonth(); // .getMonth() 는 0 ~ 11 로 출력된다.
   const year = today.getFullYear();
-
-  console.log(day);
 
   return (
     <>
@@ -63,7 +77,8 @@ function Counter() {
         <Button btnName="+" functionName={handlePlusCount} />
       </div>
       <p>
-        {count} days from today is {day} {month} {date} {year}
+        {count} days from today is {nameOfDay[day]} {nameOfMonth[month]} {date}{' '}
+        {year}
       </p>
     </>
   );
