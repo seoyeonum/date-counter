@@ -33,6 +33,23 @@ function Counter() {
     setCount((count) => count + step);
   }
 
+  // const date1 = new Date(); // new Date() 는 Object
+  // console.log(date1);
+  // console.log(typeof date1);
+  // const date2 = Date(); // Date() 는 string
+  // console.log(date2);
+  // console.log(typeof date2);
+
+  // get today's data
+  const today = new Date();
+
+  const day = today.getDay(); // .getDay() 는 0(일) ~ 6(토)로 출력된다.
+  const date = today.getDate();
+  const month = today.getMonth() + 1; // .getMonth() 는 0 ~ 11 로 출력된다.
+  const year = today.getFullYear();
+
+  console.log(day);
+
   return (
     <>
       <div>
@@ -45,7 +62,9 @@ function Counter() {
         Count: {count}
         <Button btnName="+" functionName={handlePlusCount} />
       </div>
-      <p>{count} days from today is Sat Sep 20 2025</p>
+      <p>
+        {count} days from today is {day} {month} {date} {year}
+      </p>
     </>
   );
 }
