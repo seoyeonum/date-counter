@@ -17,16 +17,6 @@ function Counter() {
   const today = new Date();
   today.setDate(today.getDate() + count);
 
-  // step handler: minus
-  function handleMinusStep() {
-    if (step > 1) setStep((s) => s - 1);
-  }
-
-  // step handler: plus
-  function handlePlusStep() {
-    setStep((s) => s + 1);
-  }
-
   // count handler: minus
   function handleMinusCount() {
     setCount((c) => c - step);
@@ -40,9 +30,15 @@ function Counter() {
   return (
     <>
       <div>
-        <Button btnName="-" functionName={handleMinusStep} />
-        <span>Step: {step}</span>
-        <Button btnName="+" functionName={handlePlusStep} />
+        {/* date-counter 의 template 변경하기 */}
+        <input
+          type="range"
+          min="0"
+          max="10"
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+        />
+        <span>{step}</span>
       </div>
       <div>
         <Button btnName="-" functionName={handleMinusCount} />
