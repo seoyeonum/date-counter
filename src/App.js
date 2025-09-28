@@ -17,6 +17,11 @@ function Counter() {
   const today = new Date();
   today.setDate(today.getDate() + count);
 
+  // step handler
+  function handleStep(e) {
+    setStep(Number(e.target.value));
+  }
+
   // count handler: minus
   function handleMinusCount() {
     setCount((c) => c - step);
@@ -25,6 +30,12 @@ function Counter() {
   // count handler: plus
   function handlePlusCount() {
     setCount((c) => c + step);
+  }
+
+  // handleReset
+  function handleReset() {
+    setStep(1);
+    setCount(0);
   }
 
   return (
@@ -36,13 +47,14 @@ function Counter() {
           min="0"
           max="10"
           value={step}
-          onChange={(e) => setStep(Number(e.target.value))}
+          onChange={handleStep}
         />
         <span>{step}</span>
       </div>
       <div>
         <Button btnName="-" functionName={handleMinusCount} />
-        <span>Count: {count}</span>
+        <input type="text" value={count}></input>
+        {/* <span>Count: {count}</span> */}
         <Button btnName="+" functionName={handlePlusCount} />
       </div>
       <p>
@@ -55,6 +67,9 @@ function Counter() {
           {today.toDateString()}
         </span>
       </p>
+      <button type="reset" onClick={handleReset}>
+        Reset
+      </button>
     </>
   );
 }
