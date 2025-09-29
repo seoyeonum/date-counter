@@ -53,7 +53,11 @@ function Counter() {
       </div>
       <div>
         <Button btnName="-" functionName={handleMinusCount} />
-        <input type="text" value={count}></input>
+        <input
+          type="text"
+          value={count}
+          onChange={(e) => setCount(Number(e.target.value))}
+        />
         {/* <span>Count: {count}</span> */}
         <Button btnName="+" functionName={handlePlusCount} />
       </div>
@@ -67,9 +71,13 @@ function Counter() {
           {today.toDateString()}
         </span>
       </p>
-      <button type="reset" onClick={handleReset}>
-        Reset
-      </button>
+      {count !== 0 || step !== 1 ? (
+        <div>
+          <button type="reset" onClick={handleReset}>
+            Reset
+          </button>
+        </div>
+      ) : null}
     </>
   );
 }
